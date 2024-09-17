@@ -2189,7 +2189,7 @@ loaf_converter""",
         # then we send the tron messages
         if trons_to_make == 0:
             return
-        elif trons_to_make < 3:
+        elif user_account.get("full_chess_set") < 10:
             messages_to_send = trons_to_make
             while messages_to_send > 0:
                 await utility.smart_reply(ctx, f"You have collected all the chess pieces! Congratulations!\n\nWhat a beautiful collection!")
@@ -2209,7 +2209,7 @@ loaf_converter""",
             messages_to_send = trons_to_make
             while messages_to_send > 0:
                 await asyncio.sleep(1)
-                await utility.smart_reply(ctx, f"Congratulations! You've collected all the chess pieces! This will be chessatron **#{user_account.get(values.chessatron.text)+1-messages_to_send}** for you.\n\n{board}\nHere is your award of **{total_dough_value//trons_to_make} dough**, and here's your new chessatron!")
+                await utility.smart_reply(ctx, f"Congratulations! You've collected all the chess pieces! This will be chessatron **#{user_account.get("full_chess_set")+1-messages_to_send}** for you.\n\n{board}\nHere is your award of **{total_dough_value//trons_to_make} dough**, and here's your new chessatron!")
                 await asyncio.sleep(1)
                 await utility.smart_reply(ctx, f"{values.chessatron.text}")
                 messages_to_send -= 1
